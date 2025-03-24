@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Detail Finder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 40%;
+            margin: auto;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin-bottom: 25px;
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 18px;
+            width: 100%;
+        }
+        input {
+            background: #fff;
+            color: #333;
+            outline: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        button {
+            background: #ff7f50;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff4500;
+            transform: scale(1.05);
+        }
+        .response {
+            margin-top: 25px;
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 18px;
+        }
+        .error-message {
+            color: #ffcc00;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 1024px) {
+            .container {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SIM Detail Finder</h1>
+        <input type="text" id="number" placeholder="Enter CNIC or Phone Number">
+        <button onclick="fetchData()">Get Details</button>
+
+        <div class="response fade-in" id="result"></div>
+        <p class="error-message" id="error-message"></p>
+    </div>
+
+    <script>
+        function fetchData() {
+            let number = document.getElementById('number').value.trim();
+            let resultDiv = document.getElementById('result');
+            let errorDiv = document.getElementById('error-message');
+
+            resultDiv.innerHTML = "";
+            errorDiv.innerHTML = "";
+
+            if (number === '') {
+                errorDiv.innerHTML = "⚠ Please enter a number!";
+                return;
+            }
+
+            fetch('fetch.php?number=' + number)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        resultDiv.innerHTML = data.data;
+                        resultDiv.style.display = 'block';
+                    } else {
+                        errorDiv.innerHTML = "❌ " + data.message;
+                    }
+                })
+                .catch(error => {
+                    errorDiv.innerHTML = "❌ An error occurred!";
+                    console.error('Error:', error);
+                });
+        }
+
+        // Enter key press event
+        document.getElementById("number").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                fetchData();
+            }
+        });
+    </script>
+</body>
+</html>

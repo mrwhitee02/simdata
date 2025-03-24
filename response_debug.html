@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEM8939L21"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EEM8939L21');
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIM Information Search</title>
+
+  <!-- Example of using a Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      /* Soft pastel gradient background */
+      background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 25px;
+      background: #ffffff;
+      /* Soft shadow to give depth */
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff6f91;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 28px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    form {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    input[type="number"] {
+      width: 260px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.2s;
+      background: #f9f9f9;
+    }
+
+    input[type="number"]:focus {
+      border-color: #ff6f91;
+    }
+
+    button {
+      padding: 12px 22px;
+      background: #ff6f91; /* main button color */
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff577e; /* hover color */
+      transform: translateY(-1px);
+    }
+
+    .response {
+      margin-top: 35px;
+      padding: 20px;
+      background: #fdfdfd;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .response h2 {
+      margin-bottom: 15px;
+      color: #ff6f91;
+      font-size: 24px;
+    }
+
+    .response h3 {
+      margin-top: 20px;
+      color: #ff6f91;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      background-color: #96ceb4; /* a complementary color for copy */
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .copy-btn:hover {
+      background-color: #82b29b;
+      transform: translateY(-1px);
+    }
+
+    .whatsapp {
+      margin-top: 20px;
+      text-align: center;
+    }
+    /* Container styling for the response area */
+.response {
+  margin-top: 35px;
+  padding: 20px;
+  background: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Heading styles */
+.response h2 {
+  margin-bottom: 15px;
+  color: #ff6f91; /* Use any color you like */
+  font-size: 24px;
+}
+.response h3 {
+  margin-top: 20px;
+  color: #ff6f91;
+}
+
+/* Results table styling */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* Table cells and header styling */
+.results-table th,
+.results-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.results-table th {
+  width: 150px;
+  text-align: left;
+  background-color: #fafafa;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Optional row hover effect */
+.results-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Style the copy button differently */
+.copy-btn {
+  margin-top: 20px;
+  background-color: #ee6b7b; 
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #82b29b;
+  transform: translateY(-1px);
+}
+
+
+    .whatsapp a {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #25d366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .whatsapp a:hover {
+      background-color: #1da851;
+      transform: translateY(-1px);
+    }
+
+    .services {
+      margin-top: 40px;
+    }
+
+    .services h2 {
+      margin-bottom: 10px;
+      color: #ff6f91;
+      font-size: 22px;
+    }
+
+    .service-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .service-list li {
+      margin: 6px 0;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 6px;
+    }
+
+    .button-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: #25d366;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .button-link:hover {
+      background-color: #1da851;
+      transform: translateY(-1px);
+    }
+
+    .button-link img {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>SIM Information Search</h1>
+
+    <b><p>Enter the mobile number or CNIC to fetch the details.</p></b>
+
+    <!-- For Flask, you might use:
+         <form action="/" method="POST"> -->
+    <form action="/" method="POST">
+      <input 
+        type="number" 
+        name="number" 
+        placeholder="0302XXXXXXX or 54401XXXXXXXXX" 
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    
+  <div class="response">
+    <h2>Search Results:</h2>
+    <table class="results-table">
+      <tr>
+        <th>Name</th>
+        <td>NAZIR AHAMD</td>
+      </tr>
+      <tr>
+        <th>CNIC</th>
+        <td>3210227108791</td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td>City CHAK BAHDUR GARH Tehsil/D</td>
+      </tr>
+    </table>
+
+    
+      <h3>Associated Numbers:</h3>
+      <ul>
+        
+          <li>923342346033</li>
+        
+          <li>923356191317</li>
+        
+          <li>923350511070</li>
+        
+      </ul>
+    
+
+    <button class="copy-btn" onclick="copyResults()">Copy Results</button>
+  </div>
+
+
+
+    <div class="whatsapp">
+      <a href="https://api.whatsapp.com/send/?phone=923366320893&text=Hello+Need+Paid+Services" target="_blank">Contact on WhatsApp For Paid Service</a>
+    </div>
+
+    <!-- DelightChat WhatsApp Widget container -->
+    <div id="container-74adc75c05d02d631f55943709c6b098"></div>
+
+    <div class="services">
+      <h2>Paid Services</h2>
+      <ul class="service-list">
+        <li>Ownership of fresh single num</li>
+        <li>Whatsapp Hacke</li>
+        <li>Whatsapp Login</li>
+        <li>All Num Against CNIC</li>
+        <li>Family Tree</li>
+        <li>NIC Color Copy Real</li>
+        <li>IMEI Tracking</li>
+        <li>World Wide Travel History</li>
+        <li>CDR All Network</li>
+        <li>Private Number Software</li>
+        <li>Death Certificate</li>
+        <li>Marriage Certificate</li>
+      </ul>
+      <a href="https://api.whatsapp.com/send/?phone=923366320893&text=Hello+Need+Paid+Services" target="_blank" class="button-link">
+       Contact Now
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 All rights reserved.
+  </footer>
+
+  <!-- DelightChat Script -->
+  <script
+    async
+    src="https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js"
+  ></script>
+  <script>
+    var wa_btnSetting = {
+      "btnColor":"#16BE45",
+      "ctaText":"Start Chat",
+      "cornerRadius":40,
+      "marginBottom":20,
+      "marginLeft":20,
+      "marginRight":20,
+      "btnPosition":"right",
+      "whatsAppNumber":"923366320893",
+      "welcomeMessage":"Hello",
+      "zIndex":999999,
+      "btnColorScheme":"light"
+    };
+    window.onload = () => {
+      _waEmbed(wa_btnSetting);
+    };
+  </script>
+
+  <!-- Copy to Clipboard Script -->
+  <script>
+    function copyResults() {
+      const responseElement = document.querySelector('.response');
+      if (responseElement) {
+        const textToCopy = responseElement.innerText;
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert('Results copied to clipboard!');
+          })
+          .catch((error) => {
+            alert('Error copying text: ' + error);
+          });
+      }
+    }
+  </script>
+  
+  <div class="container">
+    <h1>Comprehensive Guide to SIM Data Tracking in Pakistan</h1>
+    <p>In the digital age, tracking and verifying SIM card data has become an essential need for individuals and organizations alike. This comprehensive article delves into live tracker SIM data, Pak SIM data, and related services, focusing on their importance, features, and legal considerations. By exploring keywords such as <strong>live tracker sim data</strong>, <strong>pak sim data</strong>, <strong>pak data cf</strong>, and <strong>sim ownership details</strong>, we aim to provide a detailed understanding of the tools and methods available in Pakistan.</p>
+    
+    <h2>What is Live Tracker SIM Data?</h2>
+    <p>Live tracker SIM data refers to services that allow users to access real-time information about a SIM card owner, including their name, address, and registration details. These services have gained popularity due to their effectiveness in preventing fraud and ensuring personal and professional security.</p>
+
+    <p><strong>Key features of live tracker SIM data include:</strong></p>
+    <ul>
+      <li><strong>Real-Time Data Access</strong>: Accurate and up-to-date information.</li>
+      <li><strong>Ease of Use</strong>: User-friendly platforms for seamless navigation.</li>
+      <li><strong>High Reliability</strong>: Trusted services ensure data accuracy.</li>
+    </ul>
+
+    <h2>Importance of Live Tracker SIM Data in Pakistan</h2>
+    <p>Pakistan faces challenges such as scam calls, fraudulent activities, and identity theft. Tools like <strong>live tracker SIM data Pakistan</strong> help mitigate these issues by enabling users to:</p>
+    <ul>
+      <li>Identify unknown callers.</li>
+      <li>Verify the authenticity of a SIM card owner.</li>
+      <li>Prevent unauthorized access to sensitive information.</li>
+    </ul>
+
+    <p>Reliable platforms such as <a href="https://freshsimdetails.com">Fresh SIM Details</a> and <a href="https://simdetail.pro">Sim Detail Pro</a> ensure compliance with local laws, offering safe and secure services. These services have been designed to help people verify the authenticity of the SIM owners and reduce the risk of fraud. In a country like Pakistan, where SIM card-based fraud is prevalent, such services play a critical role in providing individuals with the necessary tools to protect their identities.</p>
+
+    <h2>Exploring Pak SIM Data Services</h2>
+    <p><strong>Pak SIM data</strong> encompasses tools and databases that store information about SIM card owners in Pakistan. These services cater to various needs, from personal safety to business operations. Having access to reliable Pak SIM data is crucial for verifying the identity of people you interact with, particularly in situations where scams and fraud are common.</p>
+
+    <h3>Features of Pak SIM Data Services:</h3>
+    <ul>
+      <li><strong>Comprehensive Information</strong>: Access to detailed SIM owner data.</li>
+      <li><strong>Secure Access</strong>: Ensures privacy and security of information.</li>
+      <li><strong>Legal Compliance</strong>: Adheres to Pakistani regulations.</li>
+    </ul>
+
+    <p>Pak SIM data services offer a range of features that provide users with the ability to gather accurate and reliable information about the SIM owners. These services enable individuals and businesses to make informed decisions when interacting with others, reducing the risk of fraud and ensuring safety. However, it's important to use these services responsibly and ensure compliance with local laws.</p>
+
+    <h2>Pak Data CF and Pak SIM GA</h2>
+    <p>Two prominent tools, <strong>Pak Data CF</strong> and <strong>Pak SIM GA</strong>, have emerged as reliable options for tracking SIM ownership details. These services offer:</p>
+    <ul>
+      <li>High-speed data retrieval.</li>
+      <li>Accurate ownership details.</li>
+      <li>User-friendly interfaces for easy access.</li>
+    </ul>
+
+    <p>Businesses, security agencies, and individuals utilize these tools to ensure the authenticity of communication channels. These platforms also provide an easy-to-understand process for checking the ownership and registration details of a SIM card in Pakistan. Whether it's for personal safety or business verification, these tools provide essential features to protect the user from fraudulent activities.</p>
+
+    <h2>How to Use Live Tracker SIM Data Tools</h2>
+    <p>Using a live tracker SIM data tool is simple and straightforward:</p>
+    <ol>
+      <li><strong>Select a Trusted Platform</strong>: Choose reliable services like <a href="https://freshsimdetails.com">Fresh SIM Details</a> and <a href="https://simdetail.pro">Sim Detail Pro</a>.</li>
+      <li><strong>Enter the SIM Number</strong>: Input the SIM card number you want to verify.</li>
+      <li><strong>Access the Results</strong>: View detailed information, including the owner’s name, address, and registration details.</li>
+    </ol>
+    
+    <p>It is important to use these tools responsibly and only for legitimate purposes. Many of these platforms offer both free and premium services. The free services may provide limited information, while premium services can provide more detailed and comprehensive data about the SIM owner, ensuring you get the most reliable information.</p>
+
+    <h2>Legal and Ethical Considerations</h2>
+    <p>Accessing SIM data must comply with local laws and regulations. Unauthorized access to personal information is a punishable offense. Platforms like <a href="https://simdetail.pro">Sim Detail Pro</a> emphasize legal compliance, ensuring user privacy is protected. While these services offer valuable information, users must remain aware of the ethical and legal boundaries that govern their use.</p>
+
+    <p>It is critical to only use SIM tracking services for legitimate purposes such as security, fraud prevention, or business verifications. Using these services for malicious or illegal purposes can lead to legal consequences. Therefore, before using any live tracker SIM data service, always ensure that you are in compliance with Pakistani laws governing the use of personal data.</p>
+
+    <h2>Advantages of SIM Data Tracking</h2>
+    <p>The advantages of using SIM data tracking services include:</p>
+    <ul>
+      <li><strong>Enhanced Security</strong>: Quickly verify suspicious calls and avoid scams.</li>
+      <li><strong>Fraud Prevention</strong>: Detect fraudulent activity and block potential threats.</li>
+      <li><strong>Better Communication</strong>: Know who you’re communicating with, improving trust in business and personal interactions.</li>
+    </ul>
+
+    <h2>Real-World Applications of SIM Data Tracking</h2>
+    <p>SIM data tracking can be applied in various real-world scenarios, such as:</p>
+    <ul>
+      <li><strong>Business Verification:</strong> Ensuring the legitimacy of business partners and clients.</li>
+      <li><strong>Fraud Prevention:</strong> Preventing identity theft and fraudulent transactions.</li>
+      <li><strong>Personal Security:</strong> Protecting against scam calls and messages.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>In conclusion, live tracker SIM data services provide a powerful tool to enhance security, verify SIM ownership, and protect against fraud. Whether you're an individual looking to secure your communications or a business aiming to verify client details, these services play an essential role in ensuring safety. By leveraging tools like <a href="https://freshsimdetails.com">Fresh SIM Details</a> and <a href="https://simdetail.pro">Sim Detail Pro</a>, users can access the necessary information to make informed decisions and stay safe.</p>
+
+    <p>Explore the many benefits of using SIM data tracking services, but always ensure compliance with the law to protect personal privacy and uphold ethical standards.</p>
+
+   
+  
+</body>
+</html>
